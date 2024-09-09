@@ -5,3 +5,6 @@
 /CustomerOnBoardingBackend/.vs
 /CustomerOnBoardingBackend/.bin
 /CustomerOnBoardingBackend/.obj
+/.vs
+/CustomerOnBoardingBackend/CustomerOnboardingApplication/obj/Debug/net8.0/CustomerOnboardingApplication.AssemblyInfo.cs
+/CustomerOnBoardingBackend/CustomerOnboardingApplication/obj/Debug/net8.0/CustomerOnboardingApplication.AssemblyInfoInputs.cache
