@@ -3,4 +3,5 @@
 ################################################################################
 
 /CustomerOnBoardingBackend/.vs
-
+/CustomerOnBoardingBackend/.bin
+/CustomerOnBoardingBackend/.obj
