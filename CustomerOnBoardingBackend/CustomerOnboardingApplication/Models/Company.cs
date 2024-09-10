@@ -19,11 +19,9 @@ public partial class Company
 
     public DateTime? DateOfIncorporation { get; set; }
 
-    public int? CountryId { get; set; }
+    public string? CountryName { get; set; }
 
     public int? CustomerId { get; set; }
-
-    public virtual Country? Country { get; set; }
 
     public virtual Customer? Customer { get; set; }
 }
