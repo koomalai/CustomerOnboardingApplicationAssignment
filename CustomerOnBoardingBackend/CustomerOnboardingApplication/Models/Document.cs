@@ -9,6 +9,8 @@ public partial class Document
 
     public byte[]? Documents { get; set; }
 
+    public string? FileName { get; set; }
+
     public byte[]? DigitalSignature { get; set; }
 
     public int? CustomerId { get; set; }
