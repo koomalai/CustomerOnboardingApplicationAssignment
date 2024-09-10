@@ -8,6 +8,4 @@ public partial class Country
     public int CountryId { get; set; }
 
     public string? CountryOfIncorporation { get; set; }
-
-    public virtual ICollection<Company> Companies { get; set; } = new List<Company>();
 }
