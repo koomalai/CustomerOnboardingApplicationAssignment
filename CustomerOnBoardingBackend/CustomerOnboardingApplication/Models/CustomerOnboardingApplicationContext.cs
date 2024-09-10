@@ -29,13 +29,13 @@ public partial class CustomerOnboardingApplicationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=K130468\\SQLEXPRESS;Database=CustomerOnboardingApplication;Integrated Security=True;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Server=K130468\\SQLEXPRESS;Database=CustomerOnboardingApplication;Integrated Security=True;Trust Server Certificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Application>(entity =>
         {
-            entity.HasKey(e => e.ApplicationId).HasName("PK__Applicat__C93A4C9912431315");
+            entity.HasKey(e => e.ApplicationId).HasName("PK__Applicat__C93A4C99BF7B4C51");
 
             entity.ToTable("Application");
 
@@ -47,16 +47,19 @@ public partial class CustomerOnboardingApplicationContext : DbContext
             entity.HasOne(d => d.Customer).WithMany(p => p.Applications)
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Applicati__Custo__6383C8BA");
+                .HasConstraintName("FK__Applicati__Custo__76969D2E");
         });
 
         modelBuilder.Entity<Company>(entity =>
         {
-            entity.HasKey(e => e.CompanyId).HasName("PK__Company__2D971CAC972AC76B");
+            entity.HasKey(e => e.CompanyId).HasName("PK__Company__2D971CACA39A4D4D");
 
             entity.ToTable("Company");
 
             entity.Property(e => e.BusinessActivity)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.CountryName)
                 .HasMaxLength(250)
                 .IsUnicode(false);
             entity.Property(e => e.DateOfIncorporation).HasColumnType("datetime");
@@ -73,15 +76,10 @@ public partial class CustomerOnboardingApplicationContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Country).WithMany(p => p.Companies)
-                .HasForeignKey(d => d.CountryId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Company__Country__6C190EBB");
-
             entity.HasOne(d => d.Customer).WithMany(p => p.Companies)
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Company__Custome__6D0D32F4");
+                .HasConstraintName("FK__Company__Custome__7E37BEF6");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -97,7 +95,7 @@ public partial class CustomerOnboardingApplicationContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64D85E02307E");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64D8960F4016");
 
             entity.ToTable("Customer");
 
@@ -115,7 +113,7 @@ public partial class CustomerOnboardingApplicationContext : DbContext
 
         modelBuilder.Entity<Director>(entity =>
         {
-            entity.HasKey(e => e.DirectorId).HasName("PK__Director__26C69E4654C9EF78");
+            entity.HasKey(e => e.DirectorId).HasName("PK__Director__26C69E460C07BE8C");
 
             entity.ToTable("Director");
 
@@ -129,17 +127,21 @@ public partial class CustomerOnboardingApplicationContext : DbContext
             entity.HasOne(d => d.Customer).WithMany(p => p.Directors)
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Director__Custom__5FB337D6");
+                .HasConstraintName("FK__Director__Custom__72C60C4A");
         });
 
         modelBuilder.Entity<Document>(entity =>
         {
-            entity.HasKey(e => e.DocumentId).HasName("PK__Document__1ABEEF0F94B1947A");
+            entity.HasKey(e => e.DocumentId).HasName("PK__Document__1ABEEF0F5AADD90B");
+
+            entity.Property(e => e.FileName)
+                .HasMaxLength(250)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Documents)
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Documents__Custo__66603565");
+                .HasConstraintName("FK__Documents__Custo__797309D9");
         });
 
         OnModelCreatingPartial(modelBuilder);
