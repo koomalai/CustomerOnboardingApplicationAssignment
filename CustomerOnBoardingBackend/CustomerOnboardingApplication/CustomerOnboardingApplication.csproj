@@ -8,14 +8,19 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\CustomerFormDetailsController\**" />
+    <Compile Remove="Interfaces\NewFolder\**" />
     <Content Remove="Controllers\CustomerFormDetailsController\**" />
+    <Content Remove="Interfaces\NewFolder\**" />
     <EmbeddedResource Remove="Controllers\CustomerFormDetailsController\**" />
+    <EmbeddedResource Remove="Interfaces\NewFolder\**" />
     <None Remove="Controllers\CustomerFormDetailsController\**" />
+    <None Remove="Interfaces\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="AutoMapper.Collection" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">

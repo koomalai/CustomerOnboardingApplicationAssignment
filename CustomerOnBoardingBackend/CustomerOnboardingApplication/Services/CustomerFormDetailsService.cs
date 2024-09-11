@@ -1,11 +1,6 @@
 ﻿using CustomerOnboardingApplication.Interfaces;
 using CustomerOnboardingApplication.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
-using System.IO;
-using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CustomerOnboardingApplication.Services
 {
@@ -18,16 +13,16 @@ namespace CustomerOnboardingApplication.Services
             _customerOnboardingContext = customerOnboardingContext;
         }
 
-        public async Task<bool> CustomerDetails(Customer customer, Company company, Director director, Application application, IFormFile file)
+        public async Task<int> CustomerDetails(Customer customer, Company company, Director director, Application application, IFormFile file)
         {
             if (_customerOnboardingContext.Customers.Any(email => email.Email == customer.Email))
             {
-                return false;
+                return 0;
             }
 
             if (file == null || file.Length == 0)
             {
-                return false;
+                return 0;
             }
 
             using (var memoryStream = new MemoryStream())
@@ -78,9 +73,9 @@ namespace CustomerOnboardingApplication.Services
 
             if (customer != null || company != null || director != null || application != null || file != null)
             {
-                return true;
+                return application!.ApplicationId;
             }
-            return false;
+            return 0;
         }
 
         public async Task<IEnumerable<Company>> GetCustomerDetails()
