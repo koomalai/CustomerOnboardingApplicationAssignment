@@ -1,10 +1,5 @@
-﻿using CustomerOnboardingApplication.DTO.ApplicationDto;
-using CustomerOnboardingApplication.DTO.CompanyDto;
-using CustomerOnboardingApplication.DTO.CustomerDto;
-using CustomerOnboardingApplication.DTO.DirectorDto;
-using CustomerOnboardingApplication.Interfaces;
+﻿using CustomerOnboardingApplication.Interfaces;
 using CustomerOnboardingApplication.Models;
-using CustomerOnboardingApplication.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerOnboardingApplication.Controllers

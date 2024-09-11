@@ -1,15 +1,11 @@
-﻿using Azure.Core;
-using CustomerOnboardingApplication.AutoMappers.CustomerFormDetailsAutomappers;
+﻿using CustomerOnboardingApplication.AutoMappers.CustomerFormDetailsAutomappers;
 using CustomerOnboardingApplication.DTO.ApplicationDto;
 using CustomerOnboardingApplication.DTO.CompanyDto;
-using CustomerOnboardingApplication.DTO.CountryDto;
 using CustomerOnboardingApplication.DTO.CustomerDto;
 using CustomerOnboardingApplication.DTO.DirectorDto;
-using CustomerOnboardingApplication.DTO.DocumentsDto;
 using CustomerOnboardingApplication.Interfaces;
 using CustomerOnboardingApplication.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
 
 namespace CustomerOnboardingApplication.Controllers
 {
@@ -24,7 +20,7 @@ namespace CustomerOnboardingApplication.Controllers
 
         [HttpPost]
         [Route("api/customer/customerFormSubmission")]
-        public async Task<bool> CustomerFormDetailsAsync(AddCustomerDto customerDto, AddCompanyDto companyDto, AddDirectorDto directorDto, IFormFile file)
+        public async Task<int> CustomerFormDetailsAsync(AddCustomerDto customerDto, AddCompanyDto companyDto, AddDirectorDto directorDto, IFormFile file)
         {
             var customer = customerDto.ToCustomer();
             var company = companyDto.ToCompany();
