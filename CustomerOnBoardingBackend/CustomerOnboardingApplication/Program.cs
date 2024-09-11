@@ -16,6 +16,8 @@ builder.Services.AddDbContext<CustomerOnboardingApplicationContext>(options =>
                 options.UseSqlServer("Data Source = K130468\\SQLEXPRESS; Initial Catalog = CustomerOnboardingApplication; Integrated Security = True; TrustServerCertificate = True;"));
 builder.Services.AddScoped<ICustomerFormDetailsService, CustomerFormDetailsService>();
 builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<IAttachmentService, AttachmentService>();
+builder.Services.AddScoped<IApplicationService, ApplicationService>();
 
 builder.Services.AddCors(options =>
 {
